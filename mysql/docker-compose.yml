@@ -1,0 +1,31 @@
+version: '3.7'
+    
+services:
+    mysql:
+        image: mysql
+        restart: always
+        container_name: mysql
+        #build: ./
+        ports: 
+            - 3306:3306
+        environment:
+            # 密码
+            - MYSQL_ROOT_PASSWORD=111111
+            - character-set-client-handshake=FALSE
+            - character-set-server=utf8mb4
+            - collation-server=utf8mb4_unicode_ci
+            - explicit_defaults_for_timestamp=true
+            - max_allowed_packet=10M
+            - lower_case_table_names=1
+            # 时区
+            - default-time_zone='+8:00'
+        volumes:
+            - ./data/:/var/lib/mysql        
+        # 最大连接数
+        command: ["--max_connections=300"]
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '30m'
+                max-file: '1'
+

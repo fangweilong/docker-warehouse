@@ -2,12 +2,12 @@ version: "3.7"
 services:
   
   nginx:
-    # 镜像名 不能与其他镜像名重复
-    container_name: nginx-test
     # 依赖的容器 容器名:版本号
     image: nginx:latest
     # 是否自启动
     restart: always
+    # 镜像名 不能与其他镜像名重复
+    container_name: nginx-test
     # 映射端口 容器端口不需要更改 宿主机端口:容器端口 
     ports:
       - 25503:80
