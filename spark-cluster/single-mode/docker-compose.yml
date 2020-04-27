@@ -4,15 +4,15 @@ services:
     image: tyrival/hadoop-namenode:2.7.4
     container_name: namenode
     volumes:
-      - hadoop_namenode:/hadoop/dfs/name
+      - ./namenode:/hadoop/dfs/name
       - ./input_files:/input_files
-    ports: 
+    ports:
       - 50070:50070
       - 8020:8020
     environment:
       - CLUSTER_NAME=test
     env_file:
-      - ./hadoop.env
+      - hadoop.env
 
   resourcemanager:
     image: tyrival/hadoop-resourcemanager:2.7.4
@@ -23,7 +23,7 @@ services:
       - datanode2
       - datanode3
     env_file:
-      - ./hadoop.env
+      - hadoop.env
 
   historyserver:
     image: tyrival/hadoop-historyserver:2.7.4
@@ -34,9 +34,9 @@ services:
       - datanode2
       - datanode3
     volumes:
-      - hadoop_historyserver:/hadoop/yarn/timeline
+      - ./historyserver:/hadoop/yarn/timeline
     env_file:
-      - ./hadoop.env
+      - hadoop.env
 
   nodemanager1:
     image: tyrival/hadoop-nodemanager:2.7.4
@@ -47,7 +47,7 @@ services:
       - datanode2
       - datanode3
     env_file:
-      - ./hadoop.env
+      - hadoop.env
 
   datanode1:
     image: tyrival/hadoop-datanode:2.7.4
@@ -55,9 +55,9 @@ services:
     depends_on:
       - namenode
     volumes:
-      - hadoop_datanode1:/hadoop/dfs/data
+      - ./datanode1:/hadoop/dfs/data
     env_file:
-      - ./hadoop.env
+      - hadoop.env
 
   datanode2:
     image: tyrival/hadoop-datanode:2.7.4
@@ -65,9 +65,9 @@ services:
     depends_on:
       - namenode
     volumes:
-      - hadoop_datanode2:/hadoop/dfs/data
+      - ./datanode2:/hadoop/dfs/data
     env_file:
-      - ./hadoop.env
+      - hadoop.env
 
   datanode3:
     image: tyrival/hadoop-datanode:2.7.4
@@ -75,9 +75,9 @@ services:
     depends_on:
       - namenode
     volumes:
-      - hadoop_datanode3:/hadoop/dfs/data
+      - ./datanode3:/hadoop/dfs/data
     env_file:
-      - ./hadoop.env
+      - hadoop.env
 
   master:
     image: gettyimages/spark:2.4.1-hadoop-3.0
@@ -133,10 +133,3 @@ services:
     volumes:
       - ./conf/worker:/conf
       - ./data:/tmp/data
-
-volumes:
-  hadoop_namenode:
-  hadoop_datanode1:
-  hadoop_datanode2:
-  hadoop_datanode3:
-  hadoop_historyserver:

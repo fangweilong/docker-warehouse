@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  
+  nginx:
+    # 依赖的容器 容器名:版本号
+    image: twang2218/gitlab-ce-zh
+    # 是否自启动
+    restart: always
+    # 镜像名 不能与其他镜像名重复
+    container_name: gitlab-ce-zh
+    # 映射端口 容器端口不需要更改 宿主机端口:容器端口 
+    ports:
+      - 180:80
+      - 122:22
+      - 1443:443
+    # 绑定
+    volumes:
+      - ./config:/etc/gitlab
+      - ./log:/var/log/gitlab
+      - ./data:/var/opt/gitlab
