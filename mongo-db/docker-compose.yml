@@ -8,10 +8,12 @@ services:
         ports:
             - "27017:27017"
         environment:
+            # 如果不想链接时有密码 可以删掉
             - MONGO_INITDB_ROOT_USERNAME=root
             - MONGO_INITDB_ROOT_PASSWORD=111111
         volumes:
-            - ./data/db/:/var/lib/postgresql
+            - ./data/db/:/data/db
+            - ./conf:/data/configdb
         logging:
             driver: 'json-file'
             options:
