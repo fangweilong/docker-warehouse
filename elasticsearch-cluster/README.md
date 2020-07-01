@@ -1,0 +1,11 @@
+### 注意修改宿主机的配置
+
+    vim /etc/sysctl.conf
+    # 新增内容
+    vm.max_map_count=262144
+    # 读取配置
+    sysctl -p
+    # 检查
+    sysctl -a | grep 'vm.max_map_count'
+
+### 宿主机内存至少2G内存

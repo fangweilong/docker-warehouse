@@ -5,7 +5,7 @@ services:
         image: postgres:9.6
         restart: always
         container_name: pgsql
-        expose:
+        ports:
             - '5432:5432'
         environment:
             - POSTGRES_PASS=111111
