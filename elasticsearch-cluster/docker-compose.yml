@@ -19,6 +19,7 @@ services:
       - ./es1/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
       - 19200:9200
+      - 19300:9300
     networks:
       - esnet
   elasticsearch2:
