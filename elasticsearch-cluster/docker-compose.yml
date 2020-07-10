@@ -7,7 +7,9 @@ services:
       - node.name=master
       - cluster.name=elasticsearch_cluster1
       - cluster.initial_master_nodes=es1,es2
+        # 禁用交换
       - bootstrap.memory_lock=true
+      # 内存
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       nofile:
