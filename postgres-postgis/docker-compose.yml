@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 
 services:
     postgresql:
@@ -6,10 +6,10 @@ services:
         restart: always
         container_name: pgsql
         ports:
-            - '5432:5432'
+            - 5432:5432
         environment:
-            - POSTGRES_PASSWORD=123456
-            - ALLOW_IP_RANGE=0.0.0.0/0 
+            - POSTGRES_PASSWORD=111111
+            - ALLOW_IP_RANGE=0.0.0.0/0
         volumes:
             #如果不到/var/lib/postgresql/data 数据可能挂载不出来
             - ./data/:/var/lib/postgresql/data

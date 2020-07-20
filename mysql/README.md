@@ -13,7 +13,7 @@
 ### 自定义配置
 
 1. 在宿主机上映射镜像内部的`/etc/mysql/mysql-my.conf.d/`目录，然后创建cnf文件，再把自定义的配置填写在里面。
-2. 启动容器的时候，通过cmd的方法传入配置。  例如，最大连接数（可参考下docker-compose.yml）启动容器的时候传入`--max_connections=300`参数配置即可。
+2. 启动容器的时候，通过cmd的方法传入配置。例如，最大连接数（可参考下docker-compose.yml）启动容器的时候传入`--max_connections=300`参数配置即可。
 
 
 ### 镜像下载
@@ -49,7 +49,7 @@ docker-compose -f : up --build -d
 ```
 # 服务器IP
 bind-address	= 172.16.10.1
-# 集群的server id 
+# 集群的server id
 server-id               = 1
 # 同步依赖 log-bin 所以必须配置
 log-bin = /var/log/mysql/mysql-bin.log

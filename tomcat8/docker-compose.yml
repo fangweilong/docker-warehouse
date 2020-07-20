@@ -1,15 +1,15 @@
-version: '3.7'
+version: "3.7"
 services:
     tomcat8:
         image: tomcat:8
-        container_name: "tomcat8"
+        container_name: tomcat8
         restart: always
         ports:
-            - "8081:8080"
+            - 8080:8080
         volumes:
-            - ./webapps/:/opt/tomcat/webapps/
-            - ./config/server.xml:/opt/tomcat/conf/server.xml
-            - ./logs/:/opt/tomcat/logs/
+            - ./webapps/:/usr/local/tomcat/webapps/
+            - ./config/server.xml:/usr/local/tomcat/conf/server.xml
+            - ./logs/:/usr/local/tomcat/logs/
         environment:
             - JAVA_OPTS=-server -Xms128m -Xmx1g -Djava.security.egd=file:/dev/./urandom
         logging:

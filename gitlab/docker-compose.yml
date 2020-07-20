@@ -1,6 +1,6 @@
 version: "3.7"
+
 services:
-  
   nginx:
     # 依赖的容器 容器名:版本号
     image: twang2218/gitlab-ce-zh

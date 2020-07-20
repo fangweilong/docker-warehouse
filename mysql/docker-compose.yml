@@ -1,12 +1,12 @@
-version: '3.7'
-    
+version: "3.7"
+
 services:
     mysql:
-        image: mysql
+        image: mysql:latest
         restart: always
         container_name: mysql
         #build: ./
-        ports: 
+        ports:
             - 3306:3306
         environment:
             # 密码
@@ -20,7 +20,7 @@ services:
             # 时区
             - default-time_zone='+8:00'
         volumes:
-            - ./data/:/var/lib/mysql        
+            - ./data/:/var/lib/mysql
         # 最大连接数
         command: ["--max_connections=300"]
         logging:

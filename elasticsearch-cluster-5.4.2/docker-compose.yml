@@ -1,10 +1,9 @@
 version: '3.7'
 services:
   elasticsearch:
-    image: elasticsearch:7.8.0
-    container_name: es1
+    image: elasticsearch:5.4.2
+    container_name: es1-5-4-2
     environment:
-      # 内存
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       nofile:
@@ -23,8 +22,8 @@ services:
     networks:
       - esnet
   elasticsearch2:
-    image: elasticsearch:7.8.0
-    container_name: es2
+    image: elasticsearch:5.4.2
+    container_name: es2-5-4-2
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
