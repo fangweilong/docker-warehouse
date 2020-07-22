@@ -5,4 +5,4 @@ services:
     image: mobz/elasticsearch-head:5-alpine
     container_name: es-head
     ports:
-      - 15110:9100
+      - 9100:9100

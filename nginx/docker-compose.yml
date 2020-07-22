@@ -6,6 +6,9 @@ services:
     image: nginx:latest
     # 是否自启动
     restart: always
+    # 时区
+    environment:
+      TZ: 'Asia/Shanghai'
     # 镜像名 不能与其他镜像名重复
     container_name: nginx
     # 映射端口 容器端口不需要更改 宿主机端口:容器端口
