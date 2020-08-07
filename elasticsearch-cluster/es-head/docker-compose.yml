@@ -1,8 +1,8 @@
 version: '3.7'
 
 services:
-  elasticsearch-head:
-    image: mobz/elasticsearch-head:5-alpine
-    container_name: es-head
-    ports:
-      - 9100:9100
+    elasticsearch-head:
+        image: mobz/elasticsearch-head:5-alpine
+        container_name: es-head
+        ports:
+            - 9100:9100

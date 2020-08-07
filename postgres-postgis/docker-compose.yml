@@ -4,12 +4,11 @@ services:
     postgresql:
         image: postgis/postgis:9.6-2.5
         restart: always
-        environment:
-            TZ: 'Asia/Shanghai'
         container_name: pgsql
         ports:
             - 5432:5432
         environment:
+            - TZ=Asia/Shanghai
             - POSTGRES_PASSWORD=111111
             - ALLOW_IP_RANGE=0.0.0.0/0
         volumes:

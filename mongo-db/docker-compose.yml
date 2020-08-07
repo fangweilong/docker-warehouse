@@ -4,12 +4,11 @@ services:
     mongodb:
         image: mongo:latest
         restart: always
-        environment:
-            TZ: 'Asia/Shanghai'
         container_name: mongo
         ports:
             - 27017:27017
         environment:
+            - TZ=Asia/Shanghai
             # 如果不想链接时有密码 可以删掉
             - MONGO_INITDB_ROOT_USERNAME=root
             - MONGO_INITDB_ROOT_PASSWORD=111111

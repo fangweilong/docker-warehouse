@@ -1,48 +1,61 @@
 version: '3.7'
 
 services:
-  elasticsearch:
-    image: elasticsearch:5.4.2
-    container_name: es1-5-4-2
-    environment:
-      TZ: 'Asia/Shanghai'
-    environment:
-      - cluster.name=docker-cluster
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - ./es1/data:/usr/share/elasticsearch/data
-      - ./es1/logs:/usr/share/elasticsearch/logs
-      - ./es1/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-    ports:
-      - 9200:9200
-      - 9300:9300
-    networks:
-      - esnet
-  elasticsearch2:
-    image: elasticsearch:5.4.2
-    container_name: es2-5-4-2
-    environment:
-      TZ: 'Asia/Shanghai'
-    environment:
-      - cluster.name=docker-cluster
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - "discovery.zen.ping.unicast.hosts=es1-5-4-2"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - ./es2/data:/usr/share/elasticsearch/data
-      - ./es2/logs:/usr/share/elasticsearch/logs
-      - ./es1/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-    networks:
-      - esnet
+    elasticsearch:
+        image: elasticsearch:5.4.2
+        container_name: es1-5-4-2
+        environment:
+            - TZ=Asia/Shanghai
+            - cluster.name=docker-cluster
+            - bootstrap.memory_lock=true
+            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
+        volumes:
+            - ./es1/data:/usr/share/elasticsearch/data
+            - ./es1/logs:/usr/share/elasticsearch/logs
+            - ./es1/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+        ports:
+            - 9200:9200
+            - 9300:9300
+        networks:
+            - esnet
+    elasticsearch2:
+        image: elasticsearch:5.4.2
+        container_name: es2-5-4-2
+        environment:
+            - TZ=Asia/Shanghai
+            - cluster.name=docker-cluster
+            - bootstrap.memory_lock=true
+            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+            - "discovery.zen.ping.unicast.hosts=es1-5-4-2"
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
+        volumes:
+            - ./es2/data:/usr/share/elasticsearch/data
+            - ./es2/logs:/usr/share/elasticsearch/logs
+            - ./es1/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+        networks:
+            - esnet
+    kibana:
+        image: kibana:5.4.2
+        restart: always
+        container_name: kibana-5-4-2
+        ports:
+            - 15117:5601
+        volumes:
+            - ./kibana/config/kibana.yml:/etc/kibana/kibana.yml
+        environment:
+            - TZ=Asia/Shanghai
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '30m'
+                max-file: '1'
 
 networks:
   esnet:

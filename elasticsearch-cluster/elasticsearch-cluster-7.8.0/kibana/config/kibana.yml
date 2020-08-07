@@ -1,0 +1,6 @@
+server.name: kibana
+server.host: "0.0.0.0"
+# es 链接 建议使用域名
+elasticsearch.hosts: [ "http://localhost:9200" ]
+monitoring.ui.container.elasticsearch.enabled: true
+i18n.locale: "zh-CN"

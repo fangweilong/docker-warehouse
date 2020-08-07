@@ -2,18 +2,17 @@ version: "3.7"
 
 services:
     tomcat8:
-        image: tomcat:8
+        image: tomcat:8.5.57
         container_name: tomcat8
         restart: always
-        environment:
-            TZ: 'Asia/Shanghai'
         ports:
             - 8080:8080
         volumes:
             - ./webapps/:/usr/local/tomcat/webapps/
-            - ./config/server.xml:/usr/local/tomcat/conf/server.xml
+            - ./conf/:/usr/local/tomcat/conf/
             - ./logs/:/usr/local/tomcat/logs/
         environment:
+            - TZ=Asia/Shanghai
             - JAVA_OPTS=-server -Xms128m -Xmx1g -Djava.security.egd=file:/dev/./urandom
         logging:
             driver: 'json-file'

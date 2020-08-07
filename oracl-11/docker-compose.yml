@@ -1,17 +1,17 @@
 version: "3.7"
+
 services:
-  
-  nginx:
-    # 依赖的容器 容器名:版本号
-    image: oracle:11
-    # 是否自启动
-    restart: always
-    # 镜像名 不能与其他镜像名重复
-    container_name: oracle
-    # 映射端口 容器端口不需要更改 宿主机端口:容器端口 
-    ports:
-      - 1521:1521
-      - 8080:8080
-    # 绑定
-    volumes:
-      - ./data:/u01/app/oracle
+    oracle:
+        # 依赖的容器 容器名:版本号
+        image: oracle:11
+        # 是否自启动
+        restart: always
+        # 镜像名 不能与其他镜像名重复
+        container_name: oracle
+        # 映射端口 容器端口不需要更改 宿主机端口:容器端口
+        ports:
+            - 1521:1521
+            - 8080:8080
+        # 绑定
+        volumes:
+            - ./data:/u01/app/oracle

@@ -4,13 +4,11 @@ services:
     mysql:
         image: mysql:latest
         restart: always
-        environment:
-            TZ: 'Asia/Shanghai'
         container_name: mysql
-        #build: ./
         ports:
             - 3306:3306
         environment:
+            - TZ=Asia/Shanghai
             # 密码
             - MYSQL_ROOT_PASSWORD=111111
             - character-set-client-handshake=FALSE
