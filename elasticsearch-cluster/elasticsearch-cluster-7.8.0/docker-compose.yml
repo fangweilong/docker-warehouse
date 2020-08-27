@@ -4,6 +4,7 @@ services:
     es1:
         image: elasticsearch:7.8.0
         container_name: es1-7-8-0
+        restart: always
         environment:
             - TZ=Asia/Shanghai
             - node.name=es1-7-8-0
@@ -25,9 +26,11 @@ services:
             - 9300:9300
         networks:
             - esnet
+
     es2:
         image: elasticsearch:7.8.0
         container_name: es2-7-8-0
+        restart: always
         environment:
             - TZ=Asia/Shanghai
             - node.name=es2-7-8-0
@@ -46,6 +49,7 @@ services:
             - ./es2/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
         networks:
             - esnet
+
     kibana:
         image: kibana:7.8.0
         restart: always

@@ -4,6 +4,7 @@ services:
     elasticsearch:
         image: elasticsearch:5.4.2
         container_name: es1-5-4-2
+        restart: always
         environment:
             - TZ=Asia/Shanghai
             - cluster.name=docker-cluster
@@ -22,9 +23,11 @@ services:
             - 9300:9300
         networks:
             - esnet
+
     elasticsearch2:
         image: elasticsearch:5.4.2
         container_name: es2-5-4-2
+        restart: always
         environment:
             - TZ=Asia/Shanghai
             - cluster.name=docker-cluster
@@ -41,6 +44,7 @@ services:
             - ./es1/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
         networks:
             - esnet
+
     kibana:
         image: kibana:5.4.2
         restart: always
