@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+    postgresql:
+        image: postgis/postgis:13-3.0
+        restart: always
+        container_name: pgsql-13-3
+        ports:
+            - 5432:5432
+        environment:
+            - TZ=Asia/Shanghai
+            - POSTGRES_PASSWORD=111111
+            - ALLOW_IP_RANGE=0.0.0.0/0
+        volumes:
+            #如果不到/var/lib/postgresql/data 数据可能挂载不出来
+            - ./data/:/var/lib/postgresql/data
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '30m'
+                max-file: '1'
