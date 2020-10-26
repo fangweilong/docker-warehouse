@@ -3,7 +3,7 @@
 ## 版本
 
     pgsql：13
-    postgis:2.5
+    postgis:3.0
 
 ### 默认安装的插件
 
