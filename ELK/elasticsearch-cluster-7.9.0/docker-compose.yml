@@ -21,6 +21,7 @@ services:
             - ./es1/data:/usr/share/elasticsearch/data
             - ./es1/logs:/usr/share/elasticsearch/logs
             - ./es1/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+            - ./es1/plugins/:/usr/share/elasticsearch/plugins/
         ports:
             - 9200:9200
             - 9300:9300
@@ -47,6 +48,7 @@ services:
             - ./es2/data:/usr/share/elasticsearch/data
             - ./es2/logs:/usr/share/elasticsearch/logs
             - ./es2/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+            - ./es2/plugins/:/usr/share/elasticsearch/plugins/
         networks:
             - esnet
 
