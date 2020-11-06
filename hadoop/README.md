@@ -57,11 +57,11 @@
           ipconfig /flushdns
       ```
 
-      - centos
+    - centos
 
-        ```bash
-          /etc/init.d/network restart
-        ```
+      ```bash
+        /etc/init.d/network restart
+      ```
 
   - 注意
   **容器不能rm或者down，否则需要重新配制hosts。restart、stop、start无影响**
