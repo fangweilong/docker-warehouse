@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+    redis:
+        image: jenkins/jenkins:2.263.1-lts-alpine
+        container_name: jenkins
+        restart: always
+        environment:
+            TZ: 'Asia/Shanghai'
+        ports:
+            - 8080:8080
+            - 50000:50000
+        volumes:
+            - ./data/:/var/jenkins_home
+            - /var/run/docker.sock:/var/run/docker.sock
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '30m'
+                max-file: '1'
