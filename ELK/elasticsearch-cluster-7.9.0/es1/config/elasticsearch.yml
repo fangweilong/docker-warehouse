@@ -1,6 +1,9 @@
 cluster.name: "docker-cluster"
 network.host: 0.0.0.0
 
+# use regex
+script.painless.regex.enabled: true
+
 # cors
 http.cors.enabled: true
 http.cors.allow-origin: "*"
