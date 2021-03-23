@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+    jar-run:
+        # 自行更改为docker build的参数
+        image: <name>:<version>
+        container_name: app-jar:0.01
+        restart: always
+        environment:
+            - TZ=Asia/Shanghai
+        ports:
+            - 8080:8080
