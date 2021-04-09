@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+    openjdk8:
+        build: .
+        image: openjdk8-alpine:0.0.1
+        container_name: openjdk8-alpine
+        restart: always
+        environment:
+            TZ: 'Asia/Shanghai'
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '30m'
+                max-file: '1'

@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+    openjdk11:
+        build: .
+        image: openjdk11-alpine:0.0.1
+        container_name: openjdk11-alpine
+        restart: always
+        environment:
+            TZ: 'Asia/Shanghai'
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '30m'
+                max-file: '1'
