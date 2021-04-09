@@ -1,22 +1,9 @@
-# 将jar部署到docker中的Dockerfile
+# 自编译基于alpine的openjdk运行环境
 
-## docker build
+## 快捷打包
 
-- 当前根目录
-```bash
-    docker build -t <name>:<version> .
-```
-
-- or 指定目录
-```bash
-    docker build -f <path>/Dockerfile -t <name>:<version> .
-```
-
-***
-
-## docker-compose
-
-在build基础上，运行
 ~~~ bash
-    docker-compose up -d
+
+    docker-compose up --build
+
 ~~~
