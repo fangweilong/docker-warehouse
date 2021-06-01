@@ -2,15 +2,15 @@ version: '3.7'
 
 services:
     es1:
-        image: elasticsearch:7.8.0
-        container_name: es1-7-8-0
+        image: elasticsearch:7.9.0
+        container_name: es1-7-9-0
         restart: always
         environment:
             - TZ=Asia/Shanghai
-            - node.name=es1-7-8-0
+            - node.name=es1-7-9-0
             - cluster.name=es-docker-cluster
-            - discovery.seed_hosts=es2-7-8-0
-            - cluster.initial_master_nodes=es1-7-8-0,es2-7-8-0
+            - discovery.seed_hosts=es2-7-9-0
+            - cluster.initial_master_nodes=es1-7-9-0,es2-7-9-0
             - bootstrap.memory_lock=true
             - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
         ulimits:
@@ -29,15 +29,15 @@ services:
             - esnet
 
     es2:
-        image: elasticsearch:7.8.0
-        container_name: es2-7-8-0
+        image: elasticsearch:7.9.0
+        container_name: es2-7-9-0
         restart: always
         environment:
             - TZ=Asia/Shanghai
-            - node.name=es2-7-8-0
+            - node.name=es2-7-9-0
             - cluster.name=es-docker-cluster
-            - discovery.seed_hosts=es1-7-8-0
-            - cluster.initial_master_nodes=es1-7-8-0,es2-7-8-0
+            - discovery.seed_hosts=es1-7-9-0
+            - cluster.initial_master_nodes=es1-7-9-0,es2-7-9-0
             - bootstrap.memory_lock=true
             - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
         ulimits:
@@ -53,9 +53,25 @@ services:
             - esnet
 
     kibana:
-        image: kibana:7.8.0
+        image: kibana:7.9.0
         restart: always
-        container_name: kibana-7-8-0
+        container_name: kibana-7-9-0
+        ports:
+            - 5601:5601
+        volumes:
+            - ./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml
+        environment:
+            - TZ=Asia/Shanghai
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '30m'
+                max-file: '1'
+
+    logstash:
+        image: logstash:7.9.0
+        restart: always
+        container_name: logstash-7-9-0
         ports:
             - 5601:5601
         volumes:
