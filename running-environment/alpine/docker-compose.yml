@@ -1,11 +1,11 @@
 version: "3.7"
 
 services:
-    jar-run:
+    run-dev:
         build: .
         # 自行更改为docker build的参数
-        image: run-app:0.0.1
-        container_name: app-jar:0.0.1
+        image: run-dev:0.0.1-alpine
+        container_name: run-dev:0.0.1
         restart: always
         environment:
             - TZ=Asia/Shanghai
