@@ -1,11 +1,9 @@
-FROM debian
+FROM debian:stable
 
 LABEL "Author"="Teler" \
     "email"="teler96@qq.com" \
     version=0.0.1 \
     description="基础的开发环境"
-
-ENV TZ=Asia/Shanghai
 
 RUN cp /dev/null /etc/apt/sources.list && \
     echo "deb http://mirrors.163.com/debian/ buster main non-free contrib" >>/etc/apt/sources.list && \
@@ -20,10 +18,9 @@ RUN cp /dev/null /etc/apt/sources.list && \
     apt install -y openjdk-11-jre \
                 python3 \
                 python3-pip && \
-    pip3 install \
-                scikit-learn \
-                pandas \
-                -i https://mirrors.aliyun.com/pypi/simple && \
+    pip3 config set global.index-url https://mirrors.163.com/pypi/simple/ && \
+    pip3 install scikit-learn pandas && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+ENV TZ=Asia/Shanghai
 ENV LANG C.UTF-8

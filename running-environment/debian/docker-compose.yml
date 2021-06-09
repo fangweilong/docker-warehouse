@@ -7,7 +7,3 @@ services:
         image: run-dev:0.0.1-debian
         container_name: run-dev:0.0.1-debian
         restart: always
-        environment:
-            - TZ=Asia/Shanghai
-        ports:
-            - 8080:8080
