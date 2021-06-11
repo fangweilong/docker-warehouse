@@ -4,6 +4,6 @@ services:
     run-dev:
         build: .
         # 自行更改为docker build的参数
-        image: run-dev:0.0.1-debian
-        container_name: run-dev:0.0.1-debian
+        image: run-env:0.0.1-debian
+        container_name: run-env:0.0.1-debian
         restart: always
