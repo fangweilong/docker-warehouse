@@ -15,7 +15,7 @@ RUN cp /dev/null /etc/apt/sources.list && \
     echo "deb http://mirrors.163.com/debian/ buster-backports main non-free contrib" >>/etc/apt/sources.list && \
     echo "deb-src http://mirrors.163.com/debian/ buster-backports main non-free contrib" >>/etc/apt/sources.list && \
     apt update -y && \
-    apt install -y openjdk-11-jre \
+    apt install --no-install-recommends -y openjdk-11-jre \
                 python3 \
                 python3-pip && \
     pip3 config set global.index-url https://mirrors.163.com/pypi/simple/ && \

@@ -1,0 +1,29 @@
+# 启动模板
+version: "3.7"
+
+services:
+    start:
+        # 倚赖的镜像名
+        image: imageName
+        # 启动的容器名
+        container_name: imageName
+        # 重启方式
+        restart: always
+        # 挂载的端口
+        # 宿主机端口:容器内部端口
+        ports:
+            - 80:80
+            - 8080:8080
+        # 挂载数据卷
+        # 宿主机路径:容器内部路径
+        volumes:
+            - /home/app:/home/app
+        # 环境变量
+        environment:
+            TZ: 'Asia/Shanghai'
+        # 日志设置
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '30m'
+                max-file: '1'
