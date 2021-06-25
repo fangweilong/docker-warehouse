@@ -8,8 +8,8 @@ LABEL "Author"="Teler" \
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
     apk update && \
-    apk add --no-cache openjdk11-jre tzdata python3 py3-pip && \
-    pip3 --no-cache-dir install scikit-learn pandas -i https://mirrors.aliyun.com/pypi/simple && \
+    apk add openjdk11-jre tzdata python3 py3-pip && \
+    pip3 install scikit-learn pandas openpyxl -i https://mirrors.aliyun.com/pypi/simple && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo "Asia/Shanghai" > /etc/timezone && \
     apk del tzdata && \
