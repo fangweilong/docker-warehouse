@@ -2,7 +2,7 @@ FROM alpine:3.12.4
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
     apk update && \
-    apk add openjdk8 curl busybox tzdata && \
+    apk add openjdk8-jre curl busybox tzdata && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo Asia/Shanghai > /etc/timezone && \
     apk del tzdata && \

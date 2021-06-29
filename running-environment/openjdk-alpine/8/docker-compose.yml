@@ -3,8 +3,7 @@ version: "3.7"
 services:
     openjdk8:
         build: .
-        image: openjdk8-alpine:0.0.1
-        container_name: openjdk8-alpine
+        image: teler/openjdk-alpine:1.8-0.0.1
         restart: always
         environment:
             TZ: 'Asia/Shanghai'

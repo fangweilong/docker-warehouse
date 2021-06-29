@@ -3,7 +3,7 @@ version: "3.7"
 services:
     openjdk11:
         build: .
-        image: teler/openjdk11-jre:0.0.1-alpine
+        image: teler/openjdk-alpine:11-0.0.1
         container_name: openjdk11-alpine
         restart: always
         environment:
