@@ -5,6 +5,7 @@
 - openjdk11
 - python3
 - pip3
+  - numpy
   - scikit
   - pandas
 

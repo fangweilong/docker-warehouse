@@ -5,21 +5,11 @@ LABEL "Author"="Teler" \
     version=0.0.1 \
     description="基础的开发环境"
 
-RUN cp /dev/null /etc/apt/sources.list && \
-    echo "deb http://mirrors.163.com/debian/ buster main non-free contrib" >>/etc/apt/sources.list && \
-    echo "deb-src http://mirrors.163.com/debian/ buster main non-free contrib" >>/etc/apt/sources.list && \
-    echo "deb http://mirrors.163.com/debian-security buster/updates main" >>/etc/apt/sources.list && \
-    echo "deb-src http://mirrors.163.com/debian-security buster/updates main" >>/etc/apt/sources.list && \
-    echo "deb http://mirrors.163.com/debian/ buster-updates main non-free contrib" >>/etc/apt/sources.list && \
-    echo "deb-src http://mirrors.163.com/debian/ buster-updates main non-free contrib" >>/etc/apt/sources.list && \
-    echo "deb http://mirrors.163.com/debian/ buster-backports main non-free contrib" >>/etc/apt/sources.list && \
-    echo "deb-src http://mirrors.163.com/debian/ buster-backports main non-free contrib" >>/etc/apt/sources.list && \
-    apt update -y && \
+RUN apt update -y && \
     apt install --no-install-recommends -y openjdk-11-jre \
                 python3 \
                 python3-pip && \
-    pip3 config set global.index-url https://mirrors.163.com/pypi/simple/ && \
-    pip3 install scikit-learn pandas && \
+    pip3 install numpy openpyxl scikit-learn pandas && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 ENV TZ=Asia/Shanghai
