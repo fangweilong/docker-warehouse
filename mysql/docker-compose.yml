@@ -16,13 +16,12 @@ services:
             - collation-server=utf8mb4_unicode_ci
             - explicit_defaults_for_timestamp=true
             - max_allowed_packet=10M
-            - lower_case_table_names=1
             # 时区
             - default-time_zone='+8:00'
         volumes:
             - ./data/:/var/lib/mysql
         # 最大连接数
-        command: ["--max_connections=300"]
+        command: ["--max_connections=300","lower_case_table_names=1"]
         logging:
             driver: 'json-file'
             options:

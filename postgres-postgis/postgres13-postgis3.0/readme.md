@@ -15,3 +15,6 @@
 ### 更新postgis
 
     docker exec postgis update-postgis.sh
+
+### 最大连接数
+ data/postgresql.conf的max_connections。已改成1000
