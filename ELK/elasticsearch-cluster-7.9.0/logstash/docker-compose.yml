@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+    logstash:
+        image: logstash:7.9.0
+        restart: always
+        container_name: logstash-7-9-0
+        ports:
+            - 5044:5044
+        volumes:
+            - ./config/logstash.yml:/usr/share/kibana/config/logstash.yml
+        environment:
+            - TZ=Asia/Shanghai
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '30m'
+                max-file: '1'

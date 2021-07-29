@@ -16,10 +16,10 @@ services:
             - collation-server=utf8mb4_unicode_ci
             - explicit_defaults_for_timestamp=true
             - max_allowed_packet=10M
-            # 时区
-            - default-time_zone='+8:00'
         volumes:
             - ./data/:/var/lib/mysql
+            - ./conf:/etc/mysql/mysql.conf.d
+            - ./logs:/var/log/mysql
         # 最大连接数
         command: ["--max_connections=300","lower_case_table_names=1"]
         logging:
