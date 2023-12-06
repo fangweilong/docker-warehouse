@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+    redis:
+        image: imjcker/jrebel-license-server:2.0.0
+        container_name: jrebel-license-server
+        restart: always
+        ports:
+            - 11550:9090
