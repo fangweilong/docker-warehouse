@@ -2,31 +2,27 @@ version: '3.8'
 
 services:
   namesrv:
-    image: apacherocketmq/rocketmq-nameserver:4.5.0-alpine
+    image: apache/rocketmq:5.1.4
     container_name: rocketmq-namesrv
     ports:
       - 9876:9876
     volumes:
-      - ./namesrv/logs:/home/rocketmq/logs
-      - ./namesrv/store:/home/rocketmq/store
+      - ./namesrv/logs:/usr/local/rocketmq/data/namesrv/logs
+      - ./namesrv/store:/usr/local/rocketmq/data/namesrv/store
     command: sh mqnamesrv
 
   broker:
-    image: apacherocketmq/rocketmq-broker:4.5.0-alpine
+    image: apache/rocketmq:5.1.4
     container_name: rocketmq-broker
     ports:
       - 10909:10909
       - 10911:10911
       - 10912:10912
-    environment:
-      NAMESRV_ADDR: "namesrv:9876"
-      JAVA_OPTS: " -Duser.home=/opt"
-      JAVA_OPT_EXT: "-server -Xms128m -Xmx128m -Xmn128m"
     volumes:
       - ./broker/logs:/home/rocketmq/logs
       - ./broker/store:/home/rocketmq/store
-      - ./broker/conf/broker.conf:/home/rocketmq/rocketmq-4.6.0/conf/broker.conf
-    command: sh mqbroker -c /home/rocketmq/rocketmq-4.6.0/conf/broker.conf
+      - ./broker/conf/broker.conf:/home/rocketmq/rocketmq/conf/broker.conf
+    command: sh mqbroker -c /home/rocketmq/rocketmq/conf/broker.conf -n namesrv:9876
     depends_on:
       - namesrv
 
